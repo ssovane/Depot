@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: Sandra Sovane
+  address: MyText
+  email: sandra_sovane@inbox.lv
+  pay_type: Chack
+
+two:
+  name: MyString
+  address: MyText
+  email: MyString
+  pay_type: MyString

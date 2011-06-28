@@ -22,5 +22,20 @@ Depot::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+
+  #ActionMailer
+  config.action_mailer.delivery_method = :smtp  #bija nepareiza sintakse
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8" 
+
+config.action_mailer.smtp_settings = {
+	:adress		=> "localhost",
+	:port		=> 25,
+  :domain => "localhost.localdomain",
+  :authentication => :plain,
+  :user_name => "sandra",
+  :password => "sandra"
+}
 end
 
