@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   before_filter :authorize
   protect_from_forgery
 
+  def reset_counter
+    session[:counter] = nil
+  end
 
   private
 

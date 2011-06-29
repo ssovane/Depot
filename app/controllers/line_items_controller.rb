@@ -47,6 +47,7 @@ skip_before_filter :authorize, :only => :create
 
     respond_to do |format|
       if @line_item.save
+        reset_counter
         format.html { redirect_to(store_url) }
         format.js   {@current_item = @line_item}
         format.xml  { render :xml => @line_item, :status => :created, :location => @line_item }
@@ -80,7 +81,8 @@ skip_before_filter :authorize, :only => :create
     @line_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to(line_items_url) }
+      format.html { redirect_to(store_url) }
+      format.js   {@current_item = @line_item}
       format.xml  { head :ok }
     end
   end

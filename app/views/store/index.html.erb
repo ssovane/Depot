@@ -1,3 +1,8 @@
+
+<% if session[:counter] > 5 %>
+<p> You have accessed this page <%= pluralize session[:counter], 'time' %> </p>
+<% end %>
+
 <% if notice %>
 <p id="notice"> <%= notice %> </p>
 <% end %>
