@@ -18,4 +18,16 @@ class Cart < ActiveRecord::Base
     end
   current_item
   end
+
+  def decrement(item)
+    if item.quantity > 1
+      item.quantity -= 1
+      item.save
+      item
+    else
+      item.destroy
+      false
+    end
+  end
+
 end

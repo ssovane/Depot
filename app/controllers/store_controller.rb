@@ -2,7 +2,7 @@ class StoreController < ApplicationController
 skip_before_filter :authorize
 
   def index
-    @products = Product.all
+    @products = Product.find(:all, :conditions => {:locale => I18n.locale})
     @count = increment_count
     @cart = current_cart
   end

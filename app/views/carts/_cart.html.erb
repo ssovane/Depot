@@ -3,9 +3,7 @@
 
 <table>
 
-
-
-<%= render(cart.line_items) %>
+  <%= render(cart.line_items) %>
 
   <tr class="total_line">
     <td colspan="2">Total</td>
@@ -13,6 +11,6 @@
   </tr>
 </table>
 
-<%= button_to t('.checkout'), new_order_path, :method => :get %>
-<%= button_to t('.empty'), cart, :method => :delete, :confirm => t('.sure') %>
+<%= button_to t('.checkout'), new_order_path, :method => :get, :disabled => !@order.nil? %>
+<%= button_to t('.empty'), cart, :method => :delete, :confirm => t('.sure'), :remote => true, :disabled => !@order.nil? %>
 

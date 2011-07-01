@@ -16,8 +16,9 @@ skip_before_filter :authorize, :only => [:create, :update, :destroy]
   def show
     begin
       @cart = Cart.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
+    rescue ActiveRecord::RecordNotFound => e
       logger.error "Attempt to access invalid cart #{params[:id]}"
+      Notifier.error_occured(e).deliver
       redirect_to store_url, :notice => 'Invalid cart'
     else
       respond_to do |format|
@@ -84,6 +85,7 @@ skip_before_filter :authorize, :only => [:create, :update, :destroy]
 
     respond_to do |format|
       format.html { redirect_to(store_url) }
+      format.js
       format.xml  { head :ok }
     end
   end
