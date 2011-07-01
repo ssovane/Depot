@@ -27,7 +27,7 @@ skip_before_filter :authorize, :only => [:create, :new]
   def new
     @cart = current_cart
     if @cart.line_items.empty?
-      redirect_to store_url, :notice => "Your cart is empty"
+      redirect_to store_url, :notice => I18n.t('.cartempty') 
       return
   end
 
@@ -55,7 +55,7 @@ skip_before_filter :authorize, :only => [:create, :new]
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         Notifier.order_received(@order).deliver
-        format.html { redirect_to(store_url, :notice => "Thank you for your order") }
+        format.html { redirect_to(store_url, :notice => I18n.t('.thanks') ) }
         format.xml  { render :xml => @order, :status => :created, :location => @order }
       else
         format.html { render :action => "new" }

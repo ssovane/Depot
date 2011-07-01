@@ -19,7 +19,7 @@ skip_before_filter :authorize, :only => [:create, :update, :destroy]
     rescue ActiveRecord::RecordNotFound => e
       logger.error "Attempt to access invalid cart #{params[:id]}"
       Notifier.error_occured(e).deliver
-      redirect_to store_url, :notice => 'Invalid cart'
+      redirect_to store_url, :notice => I18n.t('.invcart')
     else
       respond_to do |format|
         format.html # show.html.erb
@@ -51,7 +51,7 @@ skip_before_filter :authorize, :only => [:create, :update, :destroy]
 
     respond_to do |format|
       if @cart.save
-        format.html { redirect_to(@cart, :notice => 'Cart was successfully created.') }
+        format.html { redirect_to(@cart, :notice => I18n.t('.crecart')) }
         format.xml  { render :xml => @cart, :status => :created, :location => @cart }
       else
         format.html { render :action => "new" }
@@ -67,7 +67,7 @@ skip_before_filter :authorize, :only => [:create, :update, :destroy]
 
     respond_to do |format|
       if @cart.update_attributes(params[:cart])
-        format.html { redirect_to(@cart, :notice => 'Cart was successfully updated.') }
+        format.html { redirect_to(@cart, :notice => I18n.t('.updcart')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

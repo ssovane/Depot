@@ -46,5 +46,11 @@ lv:
       pay_prompt_html: "Izvēlēties maksājuma veidu"
       submit:       "Izveidot pasūtījumu"
 
+  invcart: "Nepareizs grozs"
+  crecart: "Grozs tika veiksmīgi izveidots."
+  updcart: "Grozs tika veiksmīgi atjaunots."
+
+  cartempty: "Jūsu grozs ir tukšs"
+  thanks: "Paldies par Jūsu pasūtījumu"
 
 
